@@ -85,7 +85,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative lg:h-screen h-[65vh] flex items-center justify-center overflow-hidden"
+      className="relative lg:h-screen md:h-[50vh] h-[40vh] flex items-center justify-center overflow-hidden"
     >
       {/* Background container */}
       <div className="absolute inset-0 w-full h-full">
@@ -136,7 +136,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="title text-lg md:text-2xl lg:text-6xl font-semibold leading-snug text-white/90 mb-8 max-w-7xl px-5 md:px-0 mx-auto text-pretty title">
+            <h1 className="title mt-10 lg:mt-0 text-lg md:text-2xl lg:text-6xl font-semibold leading-snug text-white/90 mb-8 max-w-7xl px-5 md:px-0 mx-auto text-pretty title">
               London-Based Videography & Photography for the UK & Europe
             </h1>
             <motion.div
@@ -193,8 +193,8 @@ export default function Hero() {
         <div className="absolute lg:hidden bottom-8 left-1/2 -translate-x-1/2 z-20">
           <Button
             onClick={() => scrollToSection("contact")}
-            size="lg"
-            className="bg-transparent lg:bg-white !border-1 border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
+            size="sm"
+            className="bg-transparent text-sm py-4 lg:bg-white !border-1 border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
           >
             Get a Quote
           </Button>

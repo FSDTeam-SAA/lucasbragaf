@@ -8,18 +8,19 @@ export default function TrackingProviders() {
       {/* ✅ Google Analytics (GA4) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-0W3MBWRGTN"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
+
       <Script
         id="google-analytics"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0W3MBWRGTN');
-          `,
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0W3MBWRGTN');
+    `,
         }}
       />
 

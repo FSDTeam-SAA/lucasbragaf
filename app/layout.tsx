@@ -26,10 +26,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/yeg6fkb.css" />
-        <TrackingProviders />
       </head>
 
       <body className={`font-sans ${poppins.className} overflow-x-hidden`}>
+        {/* Moved inside body so scripts execute correctly */}
+        <TrackingProviders />
         <Suspense fallback={null}>
           {children}
           <Toaster />

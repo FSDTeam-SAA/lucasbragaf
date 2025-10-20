@@ -59,7 +59,7 @@ export default function Companies() {
               transition={{
                 repeat: Infinity,
                 ease: "linear",
-                duration: 60,
+                duration: 80,
               }}
               style={{ width: "max-content" }}
             >
@@ -70,7 +70,7 @@ export default function Companies() {
                     width={120}
                     height={80}
                     alt={`Company`}
-                    className="w-20 md:w-28 h-auto object-contain opacity-80 hover:opacity-100 transition"
+                    className="w-18 md:w-20 h-auto object-contain opacity-80 hover:opacity-100 transition"
                   />
                 </div>
               ))}

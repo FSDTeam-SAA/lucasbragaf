@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Mail, Youtube } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -75,7 +77,7 @@ export default function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://res.cloudinary.com/digtoiyka/image/upload/f_auto,q_auto,w_800/v1760378693/Logo_Apresentacao_one8iz.png')`,
+            backgroundImage: `url('https://res.cloudinary.com/digtoiyka/image/upload/v1760992377/Icone_fr75eg.png')`,
           }}
         />
       </section>
@@ -99,7 +101,7 @@ export default function Hero() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://res.cloudinary.com/digtoiyka/image/upload/f_auto,q_auto,w_800/v1760378693/Logo_Apresentacao_one8iz.png')`,
+              backgroundImage: `url('https://res.cloudinary.com/digtoiyka/image/upload/v1760992377/Icone_fr75eg.png')`,
             }}
           />
         )}
@@ -114,7 +116,7 @@ export default function Hero() {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
-          poster="https://res.cloudinary.com/digtoiyka/image/upload/f_auto,q_auto,w_400/v1760378693/Logo_Apresentacao_one8iz.png"
+          poster="https://res.cloudinary.com/digtoiyka/image/upload/v1760992377/Icone_fr75eg.png"
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
@@ -195,16 +197,22 @@ export default function Hero() {
       </div>{" "}
       {/* Mobile Button */}{" "}
       {(videoLoaded || showFallback) && (
-        <div className="absolute lg:hidden bottom-8 left-1/2 -translate-x-1/2 z-20">
-          {" "}
+        <div className="absolute lg:hidden bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-3">
           <Button
             onClick={() => scrollToSection("contact")}
             size="lg"
-            className="bg-transparent lg:bg-white !border-1 border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
+            className="bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
           >
-            {" "}
-            Get a Quote{" "}
-          </Button>{" "}
+            Get a Quote
+          </Button>
+          <a href="tel:+4407514996775">
+            <Button
+              size="lg"
+              className="bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
+            >
+              Call Us
+            </Button>
+          </a>
         </div>
       )}{" "}
       {/* Social Icons */}{" "}
@@ -214,33 +222,44 @@ export default function Hero() {
           <div className="absolute lg:right-5 right-1/2 translate-x-1/2 lg:translate-x-0 lg:top-1/2 -translate-y-1/2 flex items-center justify-center lg:items-start lg:flex-col mt-12 lg:mt-0 gap-x-2 lg:space-y-2 z-20">
             {" "}
             <a target="_blank" href="mailto:sales@bragaexperience.com">
-              {" "}
-              <Mail size={28} className="p-0.5 rounded-sm text-white/70" />{" "}
-            </a>{" "}
+              <Image
+                src="/mail.png"
+                width={25}
+                height={25}
+                alt="mail icon"
+                className="object-cover"
+              />
+            </a>
             <a target="_blank" href="https://www.youtube.com/@lucasbraga1230">
-              {" "}
-              <Youtube
-                size={32}
-                className="p-0.5 rounded-sm text-white/70"
-              />{" "}
-            </a>{" "}
-            <a target="_blank" href="https://www.instagram.com/bragaexp">
-              {" "}
-              <Instagram
-                size={30}
-                className="p-0.5 rounded-sm text-white/70"
-              />{" "}
-            </a>{" "}
+              <Image
+                src="/youtube.png"
+                width={25}
+                height={25}
+                alt="youtube"
+                className="object-cover"
+              />
+            </a>
+            <a target="_blank" href="https://www.instagram.com/bragaexp/">
+              <Image
+                src="/instagram.png"
+                width={25}
+                height={25}
+                alt="instagram"
+                className="object-cover"
+              />
+            </a>
             <a
               target="_blank"
               href="https://www.linkedin.com/company/braga-experience/"
             >
-              {" "}
-              <Linkedin
-                size={30}
-                className="p-0.5 rounded-sm text-white/70"
-              />{" "}
-            </a>{" "}
+              <Image
+                src="/linkedin.png"
+                width={25}
+                height={25}
+                alt="linkedin"
+                className="object-cover"
+              />
+            </a>
           </div>{" "}
         </div>
       )}

@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const companies = [
+interface Company {
+  image: string;
+}
+
+const companies: Company[] = [
   { image: "/l1.png" },
   { image: "/l2.png" },
   { image: "/l3.png" },
@@ -14,20 +18,18 @@ const companies = [
 ];
 
 export default function Companies() {
-  const [key, setKey] = useState(0); // to force restart
-  const times = 10;
+  const [key, setKey] = useState<number>(0);
+  const times: number = 10;
 
-  // Repeat the array
-  let repeated: typeof companies = [];
+  let repeated: Company[] = [];
   for (let i = 0; i < times; i++) {
     repeated = repeated.concat(companies);
   }
 
-  // Restart animation every 5 minutes
   useEffect(() => {
-    const interval = setInterval(() => {
-      setKey((prev) => prev + 1); // trigger re-render/restart animation
-    }, 5 * 60 * 1000); // 5 minutes in milliseconds
+    const interval: NodeJS.Timeout = setInterval(() => {
+      setKey((prev: number) => prev + 1);
+    }, 5 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -49,27 +51,28 @@ export default function Companies() {
             Proudly Partnered with These Companies
           </motion.h2>
 
-          {/* Scrolling logos with restart key */}
           <div className="relative w-full overflow-hidden">
             <motion.div
-              key={key} // important: triggers restart
-              className="flex items-center gap-12"
+              key={key}
+              className="flex items-center gap-8 md:gap-12"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 repeat: Infinity,
                 ease: "linear",
-                duration: 15, // 5 minutes for one full scroll
+                duration: 80,
               }}
-            >``
+              style={{ width: "max-content" }}
+            >
               {repeated.map((company, index) => (
-                <Image
-                  key={index}
-                  src={company.image}
-                  width={0}
-                  height={0}
-                  alt={`Company`}
-                  className="w-28 h-auto object-contain opacity-80 hover:opacity-100 transition"
-                />
+                <div key={index} className="flex-shrink-0">
+                  <Image
+                    src={company.image}
+                    width={120}
+                    height={80}
+                    alt={`Company`}
+                    className="w-18 md:w-20 h-auto object-contain opacity-80 hover:opacity-100 transition"
+                  />
+                </div>
               ))}
             </motion.div>
           </div>

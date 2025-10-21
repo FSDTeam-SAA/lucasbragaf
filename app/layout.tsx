@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { Poppins } from "next/font/google";
 import TrackingProviders from "@/providers/tracking-providers";
 import "./globals.css";
+import Whatsapp from "@/components/whatsapp";
 
 export const metadata: Metadata = {
   title: "Braga Experience - Professional Videography & Photography",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           {children}
           <Toaster />
+          <Whatsapp />
         </Suspense>
       </body>
     </html>

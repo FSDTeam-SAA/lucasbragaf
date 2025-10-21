@@ -66,7 +66,10 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="lg:py-12 py-5 bg-white/10 relative overflow-x-hidden">
+    <section
+      id="contact"
+      className="lg:py-12 py-5 bg-white/10 relative overflow-x-hidden"
+    >
       <div className="container mx-auto px-2 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-5">
           {/* Left side - Info */}
@@ -118,7 +121,7 @@ export default function ContactForm() {
                 <p className="pt-3 text-lg font-semibold text-[#C5F719] title">
                   Social Links
                 </p>
-                <div className="flex items-center space-x-3 group">
+                <div className="inline-flex items-center space-x-3 group">
                   <a
                     target="_blank"
                     href="https://www.youtube.com/@lucasbraga1230"
@@ -128,7 +131,7 @@ export default function ContactForm() {
                       width={30}
                       height={30}
                       alt="youtube"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a target="_blank" href="https://www.instagram.com/bragaexp/">
@@ -137,7 +140,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="instagram"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a
@@ -149,7 +152,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="linkedin"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a target="_blank" href="tel:+44 07514-996775">
@@ -158,7 +161,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="phone icon"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a target="_blank" href="mailto:sales@bragaexperience.com">
@@ -167,7 +170,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="mail icon"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                 </div>
@@ -339,7 +342,7 @@ export default function ContactForm() {
                       width={30}
                       height={30}
                       alt="youtube"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a target="_blank" href="https://www.instagram.com/bragaexp/">
@@ -348,7 +351,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="instagram"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                   <a
@@ -360,7 +363,7 @@ export default function ContactForm() {
                       width={25}
                       height={25}
                       alt="linkedin"
-                      className="saturate-0 group-hover:saturate-100 transition-all duration-300"
+                      className=""
                     />
                   </a>
                 </div>

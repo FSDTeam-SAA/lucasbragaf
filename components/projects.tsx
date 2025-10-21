@@ -170,7 +170,7 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-neutral-400 text-lg"
             >
-              "Elevating your journey through film, and storytelling.
+              Elevating your journey through film, and storytelling.
             </motion.p>
           </div>
 

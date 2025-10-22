@@ -60,6 +60,7 @@ export default function ContactForm() {
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
+      console.error("Error sending message:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -307,11 +308,11 @@ export default function ContactForm() {
                   Thank you for getting in touch!
                 </h2>
                 <p className="text-gray-600 mb-4">
-                  We've received your message and will aim to respond within{" "}
+                  We&apos;ve received your message and will aim to respond within{" "}
                   <b>2 working hours</b>.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  If you'd like to speak with us directly in the meantime,
+                  If you&apos;d like to speak with us directly in the meantime,
                   please email{" "}
                   <a
                     href="mailto:sales@bragaexperience.com"

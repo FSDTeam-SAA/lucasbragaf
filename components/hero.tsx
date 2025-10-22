@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Instagram, Linkedin, Mail, Youtube } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function Hero() {
@@ -73,7 +71,7 @@ export default function Hero() {
   if (isMobile === null) {
     // Wait until hydration to render video
     return (
-      <section className="relative h-[65vh] lg:h-screen flex items-center justify-center bg-black">
+      <section className="relative h-[65vh] lg:h-[75vh] flex items-center justify-center bg-black">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -85,15 +83,15 @@ export default function Hero() {
   }
 
   const videoSrc = isMobile
-    ? "https://res.cloudinary.com/digtoiyka/video/upload/f_auto:video,q_auto:good,w_800/hero-test_ajpimd.mp4"
-    : "/videos/hero-test.mp4";
+    ? "https://res.cloudinary.com/digtoiyka/video/upload/f_auto:video,q_auto:good,w_800/v1761086298/New-Hero_1_cbudpp.mp4"
+    : "/videos/new.mp4";
 
   console.log("📱 isMobile:", isMobile, "Video:", videoSrc);
 
   return (
     <section
       id="hero"
-      className="relative lg:h-screen h-[65vh] flex items-center justify-center overflow-hidden"
+      className="relative lg:h-[75vh] h-[65vh] flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -201,14 +199,14 @@ export default function Hero() {
           <Button
             onClick={() => scrollToSection("contact")}
             size="lg"
-            className="bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
+            className="w-40 bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
           >
             Get a Quote
           </Button>
           <a href="tel:+4407514996775">
             <Button
               size="lg"
-              className="bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
+              className="w-40 bg-transparent lg:bg-white !border-[1px] border-white text-white lg:text-black hover:bg-white hover:text-neutral-950"
             >
               Call Us
             </Button>

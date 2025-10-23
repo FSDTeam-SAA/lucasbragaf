@@ -104,20 +104,33 @@ export default function Hero() {
           />
         )}
 
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          poster="https://res.cloudinary.com/digtoiyka/image/upload/v1760992377/Icone_fr75eg.png"
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
+        {isMobile ? (
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
+            <iframe
+              src="https://player.vimeo.com/video/1129854417?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute top-1/2 left-1/2 w-[177.78vh] h-[100vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
+              title="HeroMobile"
+            ></iframe>
+          </div>
+        ) : (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              videoLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            poster="https://res.cloudinary.com/digtoiyka/image/upload/v1760992377/Icone_fr75eg.png"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        )}
 
         {(videoLoaded || showFallback) && (
           <div className="absolute inset-0 bg-black/40" />

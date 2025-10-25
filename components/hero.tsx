@@ -111,7 +111,7 @@ export default function Hero() {
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
-              className="absolute top-1/2 left-1/2 w-[177.78vh] h-[100vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
+              className="absolute top-1/2 left-1/2 w-[177.78vh] h-screen min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
               title="HeroMobile"
             ></iframe>
           </div>

@@ -177,7 +177,7 @@ export function MultiStepForm() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4">
-      <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-lg shadow-xl overflow-hidden max-h-[95vh] flex flex-col">
+      <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-lg shadow-xl overflow-hidden max-h-[80vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between flex-shrink-0">
           <div className="flex-1 flex justify-center">
@@ -383,7 +383,7 @@ function PhotographyTypeStep({
       <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         Which type of photography do you need?
       </h2>
-      <div className="space-y-2 sm:space-y-3">
+      <div className="space-y-2 sm:space-y-3 max-h-[40vh] sm:max-h-[350px] overflow-y-auto pr-1 sm:pr-2">
         {options.map((option) => (
           <RadioOption
             key={option}

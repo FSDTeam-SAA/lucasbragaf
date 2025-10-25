@@ -143,13 +143,11 @@ export function MultiStepForm() {
   };
 
   const validateEmail = (email: string) => {
-    // Basic RFC 5322 compliant regex for common cases
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email.trim());
   };
 
   const validatePhone = (phone: string) => {
-    // Accepts international or local formats
     const phoneRegex = /^\+?\d{7,15}$/;
     return phoneRegex.test(phone.replace(/\s+/g, ""));
   };
@@ -178,31 +176,31 @@ export function MultiStepForm() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="relative w-full max-w-xl bg-white rounded-lg shadow-xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4">
+      <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-lg shadow-xl overflow-hidden max-h-[95vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-shrink-0">
           <div className="flex-1 flex justify-center">
             <Image
               src="/formheader.png"
               alt="form header image"
               width={800}
               height={200}
-              className="w-full h-auto mb-4"
+              className="w-full h-auto object-cover max-h-24 sm:max-h-32 md:max-h-40"
             />
           </div>
           <button
             onClick={handleClose}
-            className="absolute right-4 top-4 w-10 h-10 bg-[#00000099] hover:bg-[#00000099]/80 rounded flex items-center justify-center transition-colors cursor-pointer"
+            className="absolute right-2 top-2 sm:right-4 sm:top-4 w-8 h-8 sm:w-10 sm:h-10 bg-[#00000099] hover:bg-[#00000099]/80 rounded flex items-center justify-center transition-colors cursor-pointer"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5 text-white" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </button>
         </div>
 
         {/* Progress Bar */}
         {currentStep !== "thank-you" && (
-          <div className="h-2 bg-gray-200">
+          <div className="h-1.5 sm:h-2 bg-gray-200 flex-shrink-0">
             <div
               className="h-full bg-[#C4F82A] transition-all duration-300"
               style={{ width: `${getProgressPercentage()}%` }}
@@ -211,7 +209,7 @@ export function MultiStepForm() {
         )}
 
         {/* Content */}
-        <div className="p-8 min-h-[300px]">
+        <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
           {currentStep === "service-type" && (
             <ServiceTypeStep
               formData={formData}
@@ -256,11 +254,11 @@ export function MultiStepForm() {
 
         {/* Footer */}
         {currentStep !== "thank-you" && (
-          <div className="px-8 pb-8 flex justify-between items-center">
+          <div className="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 flex justify-between items-center gap-2 sm:gap-4 flex-shrink-0 border-t border-gray-100 pt-4">
             {currentStep !== "service-type" ? (
               <button
                 onClick={handleBack}
-                className="px-6 py-2 text-gray-600 hover:text-gray-800 font-medium transition-colors cursor-pointer"
+                className="px-4 py-2 sm:px-6 sm:py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 font-medium transition-colors cursor-pointer"
               >
                 Back
               </button>
@@ -271,7 +269,7 @@ export function MultiStepForm() {
               onClick={handleNext}
               disabled={isNextDisabled() || isSubmitting}
               className={cn(
-                "px-8 py-3 rounded font-medium transition-all cursor-pointer",
+                "px-6 py-2.5 sm:px-8 sm:py-3 rounded font-medium transition-all cursor-pointer text-sm sm:text-base whitespace-nowrap",
                 isNextDisabled() || isSubmitting
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-[#C4F82A] text-black hover:bg-[#B5E625]"
@@ -290,7 +288,6 @@ export function MultiStepForm() {
   );
 }
 
-// Step Components
 function ServiceTypeStep({
   formData,
   updateFormData,
@@ -299,11 +296,11 @@ function ServiceTypeStep({
   updateFormData: (field: keyof FormData, value: string) => void;
 }) {
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         Which of the following describe your requirements?
       </h2>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         <RadioOption
           label="Videography"
           checked={formData.serviceType === "Videography"}
@@ -345,11 +342,11 @@ function VideographyTypeStep({
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         Which of the following describe your requirements?
       </h2>
-      <div className="space-y-3 max-h-[350px] overflow-y-auto pr-2">
+      <div className="space-y-2 sm:space-y-3 max-h-[40vh] sm:max-h-[350px] overflow-y-auto pr-1 sm:pr-2">
         {options.map((option) => (
           <RadioOption
             key={option}
@@ -382,11 +379,11 @@ function PhotographyTypeStep({
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         Which type of photography do you need?
       </h2>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {options.map((option) => (
           <RadioOption
             key={option}
@@ -415,11 +412,11 @@ function FinalProductStep({
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         What final product do you need?
       </h2>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {options.map((option) => (
           <RadioOption
             key={option}
@@ -452,11 +449,11 @@ function BudgetStep({
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         What is your estimated budget?
       </h2>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {options.map((option) => (
           <RadioOption
             key={option}
@@ -480,11 +477,11 @@ function ContactMethodStep({
   const options = ["Phone Call", "WhatsApp", "Mail"];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         How do you prefer to be contacted?
       </h2>
-      <div className="space-y-3">
+      <div className="space-y-2 sm:space-y-3">
         {options.map((option) => (
           <RadioOption
             key={option}
@@ -506,25 +503,25 @@ function ContactDetailsStep({
   updateFormData: (field: keyof FormData, value: string) => void;
 }) {
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-balance title">
+    <div className="space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance title leading-tight">
         {formData.contactMethod === "Phone Call" && "Enter your phone number."}
         {formData.contactMethod === "WhatsApp" && "Enter your WhatsApp number."}
         {formData.contactMethod === "Mail" && "Enter your mail address."}
       </h2>
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs sm:text-sm font-medium text-gray-700">
           {formData.contactMethod === "Phone Call" && "Phone Number"}
           {formData.contactMethod === "WhatsApp" && "WhatsApp Number"}
           {formData.contactMethod === "Mail" && "Email"}
         </label>
         <div className="relative">
           {formData.contactMethod === "Mail" ? (
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Mail className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
           ) : formData.contactMethod === "Phone Call" ? (
-            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Phone className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
           ) : (
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400">
+            <div className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400">
               <Image
                 src="/whatsapp2.png"
                 alt="WhatsApp"
@@ -560,7 +557,7 @@ function ContactDetailsStep({
                 ? "+44 1234 567890"
                 : "+44 1234 567890"
             }
-            className="w-full placeholder:opacity-40 pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C4F82A] focus:border-transparent"
+            className="w-full text-sm sm:text-base placeholder:opacity-40 pl-8 sm:pl-10 pr-3 sm:pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C4F82A] focus:border-transparent"
           />
         </div>
       </div>
@@ -570,9 +567,9 @@ function ContactDetailsStep({
 
 function ThankYouStep() {
   return (
-    <div className="flex flex-col items-center justify-center pt-12 space-y-4">
-      <h2 className="text-4xl font-bold text-center">Thank You!</h2>
-      <p className="text-gray-600 text-center">
+    <div className="flex flex-col items-center justify-center py-8 sm:py-12 space-y-3 sm:space-y-4">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center">Thank You!</h2>
+      <p className="text-sm sm:text-base text-gray-600 text-center px-4">
         I'll get in touch within next 2 Hours.
       </p>
     </div>
@@ -589,16 +586,18 @@ function RadioOption({
   onChange: () => void;
 }) {
   return (
-    <label className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-      <div className="relative flex items-center justify-center">
+    <label className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+      <div className="relative flex items-center justify-center flex-shrink-0">
         <input
           type="radio"
           checked={checked}
           onChange={onChange}
-          className="w-5 h-5 appearance-none border-2 border-gray-300 rounded-full checked:border-[#6366F1] checked:border-[6px] transition-all cursor-pointer"
+          className="w-4 h-4 sm:w-5 sm:h-5 appearance-none border-2 border-gray-300 rounded-full checked:border-[#6366F1] checked:border-[5px] sm:checked:border-[6px] transition-all cursor-pointer"
         />
       </div>
-      <span className="text-base text-gray-700">{label}</span>
+      <span className="text-sm sm:text-base text-gray-700 leading-snug">
+        {label}
+      </span>
     </label>
   );
 }

@@ -238,8 +238,8 @@ export default function Hero() {
           </motion.div>
         ) : (
           <div className="w-full max-w-7xl px-5 md:px-0 mx-auto mt-44 lg:mt-[450px]">
-            <h1 className="title text-lg md:text-2xl lg:text-6xl font-semibold leading-snug text-white/90 mb-8 text-pretty title">
-              London-Based Videography & Photography for the UK & Europe
+            <h1 className="title text-lg md:text-2xl lg:text-[55px] font-semibold leading-snug text-white/90 mb-8 text-pretty title">
+              Videography & Photography — London & Across the UK
             </h1>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

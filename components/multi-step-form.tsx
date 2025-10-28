@@ -386,7 +386,7 @@ function ServiceTypeStep({
   return (
     <div className="space-y-4 sm:space-y-6">
       <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance leading-tight">
-        Which of the following describe your requirements?
+        Which services are you looking for?
       </h2>
       <div className="space-y-2 sm:space-y-3">
         <RadioOption
@@ -432,7 +432,7 @@ function VideographyTypeStep({
   return (
     <div className="space-y-4 sm:space-y-6">
       <h2 className="text-xl sm:text-2xl md:text-2xl font-bold text-center text-balance leading-tight">
-        Which of the following describe your requirements?
+        Which services are you looking for?
       </h2>
       <div className="space-y-2 sm:space-y-3 max-h-[40vh] sm:max-h-[350px] overflow-y-auto pr-1 sm:pr-2">
         {options.map((option) => (

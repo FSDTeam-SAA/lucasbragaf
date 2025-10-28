@@ -210,8 +210,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="title text-lg md:text-2xl lg:text-6xl font-semibold leading-snug text-white/90 mb-8 max-w-7xl px-5 md:px-0 mx-auto text-pretty title">
-              London-Based Videography & Photography for the UK & Europe
+            <h1 className="title text-lg md:text-2xl lg:text-[55px] font-semibold leading-snug text-white/90 mb-8 max-w-7xl px-5 md:px-0 mx-auto text-pretty title">
+              Videography & Photography — London & Across the UK
             </h1>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -299,7 +299,7 @@ export default function Hero() {
           </a>
           <a
             target="_blank"
-            href="https://www.youtube.com/@lucasbraga1230"
+            href="https://www.youtube.com/@bragaexperience"
             rel="noopener noreferrer"
           >
             <Image

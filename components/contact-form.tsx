@@ -125,7 +125,7 @@ export default function ContactForm() {
                 <div className="inline-flex items-center space-x-3 group">
                   <a
                     target="_blank"
-                    href="https://www.youtube.com/@lucasbraga1230"
+                    href="https://www.youtube.com/@bragaexperience"
                   >
                     <Image
                       src="/youtube.png"
@@ -336,7 +336,7 @@ export default function ContactForm() {
                 <div className="inline-flex items-center justify-center py-2 space-x-3 group">
                   <a
                     target="_blank"
-                    href="https://www.youtube.com/@lucasbraga1230"
+                    href="https://www.youtube.com/@bragaexperience"
                   >
                     <Image
                       src="/youtube.png"

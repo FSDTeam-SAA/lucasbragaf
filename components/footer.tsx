@@ -38,7 +38,7 @@ export default function Footer() {
             </Link>
             <Link
               target="_blank"
-              href="https://www.youtube.com/@lucasbraga1230"
+              href="https://www.youtube.com/@bragaexperience"
               className="text-neutral-400 hover:text-white transition-colors"
             >
               YouTube

@@ -43,6 +43,7 @@ export function MultiStepForm() {
     whatsappNumber: "",
     email: "",
   });
+  const [showConfirmLeave, setShowConfirmLeave] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,11 +56,16 @@ export function MultiStepForm() {
   if (!isOpen) return null;
 
   const handleClose = () => {
-    setIsOpen(false);
+    setShowConfirmLeave(true);
   };
 
   const updateFormData = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const confirmLeave = () => {
+    setShowConfirmLeave(false);
+    setIsOpen(false); // actually close the form
   };
 
   const getProgressPercentage = () => {
@@ -222,6 +228,44 @@ export function MultiStepForm() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               />
             </div>
+          )}
+
+          {showConfirmLeave && (
+            <motion.div
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 text-center"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+              >
+                <h2 className="text-xl font-bold mb-3">
+                  Are you sure that you want to leave?
+                </h2>
+                <p className="text-gray-600 mb-6 text-sm">
+                  We're asking a few questions so we can find you the right
+                  pros, and send you quotes fast and free!
+                </p>
+                <div className="flex justify-center gap-3">
+                  <button
+                    onClick={confirmLeave}
+                    className="w-28 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition cursor-pointer"
+                  >
+                    Quit
+                  </button>
+                  <button
+                    onClick={() => setShowConfirmLeave(false)}
+                    className="w-28 py-2 rounded-md bg-[#C4F82A] text-black hover:bg-[#B5E625] transition cursor-pointer"
+                  >
+                    Continue
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
           )}
 
           {/* Content */}

@@ -191,45 +191,199 @@ export function MultiStepForm() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <motion.div
-          className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white rounded-lg shadow-xl overflow-hidden max-h-[80vh] flex flex-col"
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between flex-shrink-0">
-            <div className="flex-1 flex justify-center">
-              <Image
-                src="/formheader.png"
-                alt="form header image"
-                width={800}
-                height={200}
-                className="w-full h-auto object-cover max-h-24 sm:max-h-32 md:max-h-40"
-              />
-            </div>
-            <button
-              onClick={handleClose}
-              className="absolute right-2 top-2 sm:right-4 sm:top-4 w-8 h-8 sm:w-10 sm:h-10 bg-[#00000099] hover:bg-[#00000099]/80 rounded flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Close modal"
+        {/* Outer container always visible */}
+        <div className="relative w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl flex flex-col items-center justify-center">
+          {/* The actual form modal — hidden when confirmation is open */}
+          {!showConfirmLeave && (
+            <motion.div
+              className="w-full bg-white rounded-lg shadow-xl overflow-hidden max-h-[80vh] flex flex-col"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-            </button>
-          </div>
+              {/* Header */}
+              <div className="flex items-center justify-between flex-shrink-0">
+                <div className="flex-1 flex justify-center">
+                  <Image
+                    src="/formheader.png"
+                    alt="form header image"
+                    width={800}
+                    height={200}
+                    className="w-full h-auto object-cover max-h-24 sm:max-h-32 md:max-h-40"
+                  />
+                </div>
+                <button
+                  onClick={handleClose}
+                  className="absolute right-2 top-2 sm:right-4 sm:top-4 w-8 h-8 sm:w-10 sm:h-10 bg-[#00000099] hover:bg-[#00000099]/80 rounded flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </button>
+              </div>
 
-          {/* Progress Bar */}
-          {currentStep !== "thank-you" && (
-            <div className="h-1.5 sm:h-2 bg-gray-200 flex-shrink-0">
-              <motion.div
-                className="h-full bg-[#C4F82A]"
-                initial={{ width: 0 }}
-                animate={{ width: `${getProgressPercentage()}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              />
-            </div>
+              {/* Progress Bar */}
+              {currentStep !== "thank-you" && (
+                <div className="h-1.5 sm:h-2 bg-gray-200 flex-shrink-0">
+                  <motion.div
+                    className="h-full bg-[#C4F82A]"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${getProgressPercentage()}%` }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  />
+                </div>
+              )}
+
+              {/* Content */}
+              <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
+                <AnimatePresence mode="wait">
+                  {currentStep === "service-type" && (
+                    <motion.div
+                      key="service-type"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ServiceTypeStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "videography-type" && (
+                    <motion.div
+                      key="videography-type"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <VideographyTypeStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "photography-type" && (
+                    <motion.div
+                      key="photography-type"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <PhotographyTypeStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "final-product" && (
+                    <motion.div
+                      key="final-product"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <FinalProductStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "budget" && (
+                    <motion.div
+                      key="budget"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <BudgetStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "contact-method" && (
+                    <motion.div
+                      key="contact-method"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ContactMethodStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "contact-details" && (
+                    <motion.div
+                      key="contact-details"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ContactDetailsStep
+                        formData={formData}
+                        updateFormData={updateFormData}
+                      />
+                    </motion.div>
+                  )}
+                  {currentStep === "thank-you" && (
+                    <motion.div
+                      key="thank-you"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ThankYouStep />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Footer */}
+              {currentStep !== "thank-you" && (
+                <div className="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 flex justify-between items-center gap-2 sm:gap-4 flex-shrink-0 border-t border-gray-100 pt-4">
+                  {currentStep !== "service-type" ? (
+                    <button
+                      onClick={handleBack}
+                      className="px-4 py-2 sm:px-6 sm:py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 font-medium transition-colors cursor-pointer"
+                    >
+                      Back
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                  <button
+                    onClick={handleNext}
+                    disabled={isNextDisabled() || isSubmitting}
+                    className={cn(
+                      "px-6 py-2.5 sm:px-8 sm:py-3 rounded font-medium transition-all cursor-pointer text-sm sm:text-base whitespace-nowrap",
+                      isNextDisabled() || isSubmitting
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-[#C4F82A] text-black hover:bg-[#B5E625]"
+                    )}
+                  >
+                    {currentStep === "contact-details"
+                      ? isSubmitting
+                        ? "Submitting..."
+                        : "Submit"
+                      : "Next"}
+                  </button>
+                </div>
+              )}
+            </motion.div>
           )}
 
+          {/* Confirmation modal (always visible over everything) */}
           {showConfirmLeave && (
             <motion.div
               className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4"
@@ -244,11 +398,11 @@ export function MultiStepForm() {
                 exit={{ scale: 0.95, opacity: 0 }}
               >
                 <h2 className="text-xl font-bold mb-3">
-                  Are you sure that you want to leave?
+                  Are you sure you want to leave?
                 </h2>
                 <p className="text-gray-600 mb-6 text-sm">
-                  We're asking a few questions so we can find you the right
-                  pros, and send you quotes fast and free!
+                  We just need a few quick questions so we can send you fast,
+                  free quotes!
                 </p>
                 <div className="flex justify-center gap-3">
                   <button
@@ -267,154 +421,7 @@ export function MultiStepForm() {
               </motion.div>
             </motion.div>
           )}
-
-          {/* Content */}
-          <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
-            <AnimatePresence mode="wait">
-              {currentStep === "service-type" && (
-                <motion.div
-                  key="service-type"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ServiceTypeStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "videography-type" && (
-                <motion.div
-                  key="videography-type"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <VideographyTypeStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "photography-type" && (
-                <motion.div
-                  key="photography-type"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <PhotographyTypeStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "final-product" && (
-                <motion.div
-                  key="final-product"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FinalProductStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "budget" && (
-                <motion.div
-                  key="budget"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <BudgetStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "contact-method" && (
-                <motion.div
-                  key="contact-method"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ContactMethodStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "contact-details" && (
-                <motion.div
-                  key="contact-details"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ContactDetailsStep
-                    formData={formData}
-                    updateFormData={updateFormData}
-                  />
-                </motion.div>
-              )}
-              {currentStep === "thank-you" && (
-                <motion.div
-                  key="thank-you"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ThankYouStep />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Footer */}
-          {currentStep !== "thank-you" && (
-            <div className="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 flex justify-between items-center gap-2 sm:gap-4 flex-shrink-0 border-t border-gray-100 pt-4">
-              {currentStep !== "service-type" ? (
-                <button
-                  onClick={handleBack}
-                  className="px-4 py-2 sm:px-6 sm:py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 font-medium transition-colors cursor-pointer"
-                >
-                  Back
-                </button>
-              ) : (
-                <div />
-              )}
-              <button
-                onClick={handleNext}
-                disabled={isNextDisabled() || isSubmitting}
-                className={cn(
-                  "px-6 py-2.5 sm:px-8 sm:py-3 rounded font-medium transition-all cursor-pointer text-sm sm:text-base whitespace-nowrap",
-                  isNextDisabled() || isSubmitting
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-[#C4F82A] text-black hover:bg-[#B5E625]"
-                )}
-              >
-                {currentStep === "contact-details"
-                  ? isSubmitting
-                    ? "Submitting..."
-                    : "Submit"
-                  : "Next"}
-              </button>
-            </div>
-          )}
-        </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
@@ -447,6 +454,8 @@ function ServiceTypeStep({
     </div>
   );
 }
+
+// (The rest of your step components remain unchanged)
 
 function VideographyTypeStep({
   formData,

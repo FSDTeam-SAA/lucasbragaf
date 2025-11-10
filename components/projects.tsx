@@ -190,7 +190,7 @@ export default function Projects() {
                   : "text-white/60"
               }`}
             >
-              Filmmaking
+              Videography
             </button>
             <button
               onClick={() => setActiveTab("photography")}

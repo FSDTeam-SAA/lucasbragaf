@@ -56,7 +56,11 @@ export function MultiStepForm() {
   if (!isOpen) return null;
 
   const handleClose = () => {
-    setShowConfirmLeave(true);
+    if (currentStep === "thank-you") {
+      setIsOpen(false); // close directly after submission
+    } else {
+      setShowConfirmLeave(true);
+    }
   };
 
   const updateFormData = (field: keyof FormData, value: string) => {

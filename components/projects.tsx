@@ -295,10 +295,10 @@ export default function Projects() {
 
         {/* View More Button */}
         {projects.length > 3 && (
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-4">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all cursor-pointer"
+              className="px-6 py-2 bg-white/80 hover:bg-white/70 text-primary rounded-full transition-all cursor-pointer"
             >
               {showAll ? "View Less" : "View More"}
             </button>
